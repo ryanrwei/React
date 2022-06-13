@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="like">喜歡</button>
+    <script>
+        let likeBtn = document.getElementById('like');
+        
+        //狀態
+        let state = {
+            like : false,
+            color : 'red'
+        };
+
+        //用個函數來修改狀態
+        let setState = function(newState){
+            state = {
+                ...state,  //ES6 解構語法
+                ...newState
+            }
+            render()
+        }
+
+        //渲染
+        let render = function(){
+            if(state.like){
+                likeBtn.innerHTML = '已按讚'
+                likeBtn.style.color = 'red'
+            } else {
+                likeBtn.innerHTML = '喜歡'
+                likeBtn.style.color = 'black'                
+            }
+        }
+
+        
+        likeBtn.addEventListener('click', function(){
+            setState({
+                like : !state.like
+            })
+        })
+
+    </script>
+
+
+</body>
+</html>
