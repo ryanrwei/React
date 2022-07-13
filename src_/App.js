@@ -6,14 +6,13 @@ import List from "./components/List/List";
 import Login from "./components/Login/Login";
 
 const App = () => {
-
-  let [listData, setListData] = useState({
+  const [listData, setListData] = useState({
     listName: "ryan",
     listEmail: "xxx@com",
     listPassword: "123",
   });
 
-  let [isVisible, setvisibility] = useState("hidden");
+  const [isVisible, setvisibility] = useState("hidden");
 
   const updateListName = (newData) => {
     setListData((preState) => {
