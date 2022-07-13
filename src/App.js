@@ -1,48 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
+// import {Component, useState} from 'react';
 import './App.css';
+import Header from './components/Header/Header'
+import List from './components/List/List'
+import Login from './components/Login/Login'
 
-class App extends React.Component {
+const App =()=>{
 
-    state = {
-        counter:'Counter',
-        number:0
+    let [listData, setListData] = useState({
+        listName:'ryan',
+        listEmail:'xxx@com',
+        listPassword:'123',
+    })
+
+    let [isVisible, setvisibility] = useState('hidden')
+
+
+	const updateListName = (newData)=>{
+        setListData((preState) => {
+            return {
+                ...preState,
+                listName:newData
+            }
+        })
+	}
+	const updateListEmail = (newData)=>{
+        setListData((preState) => {
+            return {
+                ...preState,
+                listEmail:newData
+            }
+        })	
+    }
+    const updateListPassword = (newData)=>{
+        setListData((preState) => {
+            return {
+                ...preState,
+                listPassword:newData
+            }
+        })	
+	}    
+
+    const changeVisibility = (newData) =>{
+        setvisibility({isVisible:newData})
+        console.log(isVisible)
     }
 
-    render(){
-        let {counter,number} = this.state
-            
-        return (
-        <div>
-            <div id="background">
-                <div id="container">
-                    <div id="counter">{counter}</div>
-                    <div id="number">{number}</div>
-                    <div id="operator">
-                        <input type="button" id="Decrease" value="Decrease" onClick={this.Decrease} />
-                        <input type="button" id="Reset" value="Reset" onClick={this.Reset} />
-                        <input type="button" id="Increase" value="Increase" onClick={this.Increase} />
-                    </div>
-                </div>
+    return(
+    <div className='wholePage'>
+        <div className="app">
+
+            <div className="header">
+                <Header/>
             </div>
+
+            <div className='passwordWrong' style={{visibility:{isVisible}}}>Details do not match!</div>
+
+            <div className="list">
+                <List listData={listData} 
+                updateListName={updateListName}
+                updateListEmail={updateListEmail}
+                updateListPassword={updateListPassword}
+                />
+            </div>
+            
+            <div className="login">
+                <Login listData={listData} changeVisibility={changeVisibility}/>
+            </div>                               
+
         </div>
-        )
-    };
 
-    Decrease = () => {
-        let newNumber = this.state.number;
-        newNumber = newNumber - 1;
-        this.setState({number:newNumber})
-    }
-
-    Reset = () => {
-        this.setState({number:0})
-    }
-    
-    Increase = () => {
-        let newNumber = this.state.number;
-        newNumber = newNumber + 1;
-        this.setState({number:newNumber})
-    }
+    </div>)
 }
 
 export default App;

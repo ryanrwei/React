@@ -1,4 +1,41 @@
-html,
+.wholePage{
+    height: 100vh;
+    width: 100%;
+    background-color:#A9A9A9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app{
+    font-size: 18px;
+    width: 500px;
+    height: 80vh;
+    background:radial-gradient(circle closest-corner at left,yellow,red);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin:5px 10px 15px 20px;
+    }
+/* 
+    .appIn{
+        font-size: 18px;
+        width: 480px;
+        height: 78vh;
+        background-color:white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        } */
+    
+
+
+
+
+/* html,
 body {
     padding: 0;
     margin: 0;
@@ -85,5 +122,5 @@ body {
 #Increase:hover {
     background: black;
     color: white;
-}
+} */
 
